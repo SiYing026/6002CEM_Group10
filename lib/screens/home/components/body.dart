@@ -35,7 +35,7 @@ class _BodyState extends State<Body> {
       PRODUCT_TYPE_KEY: ProductType.Helicopter,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/CruiseShip.svg",
+      ICON_KEY: "assets/icons/CruiseShip.png",
       TITLE_KEY: "CruiseShip",
       PRODUCT_TYPE_KEY: ProductType.CruiseShip,
     },
@@ -45,17 +45,17 @@ class _BodyState extends State<Body> {
       PRODUCT_TYPE_KEY: ProductType.HotAirBalloon,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Paragliding.svg",
+      ICON_KEY: "assets/icons/Paragliding.png",
       TITLE_KEY: "Paragliding",
       PRODUCT_TYPE_KEY: ProductType.Paragliding,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/WhitewaterRafting.svg",
+      ICON_KEY: "assets/icons/WhitewaterRafting.png",
       TITLE_KEY: "WhitewaterRafting",
       PRODUCT_TYPE_KEY: ProductType.WhitewaterRafting,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Others.svg",
+      ICON_KEY: "assets/icons/Others.png",
       TITLE_KEY: "Others",
       PRODUCT_TYPE_KEY: ProductType.Others,
     },

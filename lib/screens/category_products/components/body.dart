@@ -253,15 +253,15 @@ class _BodyState extends State<Body> {
 
   String bannerFromProductType() {
     switch (widget.productType) {
-      case ProductType.Helicopter:
+      case ProductType.Electronics:
         return "assets/images/electronics_banner.jpg";
-      case ProductType.CruiseShip:
+      case ProductType.Books:
         return "assets/images/books_banner.jpg";
-      case ProductType.HotAirBalloon:
+      case ProductType.Fashion:
         return "assets/images/fashions_banner.jpg";
-      case ProductType.Paragliding:
+      case ProductType.Groceries:
         return "assets/images/groceries_banner.jpg";
-      case ProductType.WhitewaterRafting:
+      case ProductType.Art:
         return "assets/images/arts_banner.jpg";
       case ProductType.Others:
         return "assets/images/others_banner.jpg";
