@@ -25,7 +25,6 @@ dependencies:
     sdk: flutter
   cloud_firestore: ^4.7.1
   cupertino_icons: ^1.0.0
-  shared_preferences: ^2.1.1
   enum_to_string: ^2.0.1
   firebase_auth: ^4.6.1
   firebase_core: ^2.13.0

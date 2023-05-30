@@ -35,27 +35,27 @@ class _BodyState extends State<Body> {
       PRODUCT_TYPE_KEY: ProductType.Helicopter,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/CruiseShip.svg",
-      TITLE_KEY: "Cruise Ship",
+      ICON_KEY: "assets/icons/CruiseShip.png",
+      TITLE_KEY: "CruiseShip",
       PRODUCT_TYPE_KEY: ProductType.CruiseShip,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/HotAirBalloon.svg",
-      TITLE_KEY: "Hot Air Balloon",
+      TITLE_KEY: "HotAirBalloon",
       PRODUCT_TYPE_KEY: ProductType.HotAirBalloon,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Paragliding.svg",
+      ICON_KEY: "assets/icons/Paragliding.png",
       TITLE_KEY: "Paragliding",
       PRODUCT_TYPE_KEY: ProductType.Paragliding,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/WhitewaterRafting.svg",
-      TITLE_KEY: "Whitewater Rafting",
+      ICON_KEY: "assets/icons/WhitewaterRafting.png",
+      TITLE_KEY: "WhitewaterRafting",
       PRODUCT_TYPE_KEY: ProductType.WhitewaterRafting,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Others.svg",
+      ICON_KEY: "assets/icons/Others.png",
       TITLE_KEY: "Others",
       PRODUCT_TYPE_KEY: ProductType.Others,
     },
@@ -197,9 +197,9 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.5,
                   child: ProductsSection(
-                    sectionTitle: "Packages You Like",
+                    sectionTitle: "Products You Like",
                     productsStreamController: favouriteProductsStream,
-                    emptyListMessage: "Add Packages to Favourites",
+                    emptyListMessage: "Add Product to Favourites",
                     onProductCardTapped: onProductCardTapped,
                   ),
                 ),
@@ -207,7 +207,7 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.8,
                   child: ProductsSection(
-                    sectionTitle: "Explore All Packages",
+                    sectionTitle: "Explore All Products",
                     productsStreamController: allProductsStream,
                     emptyListMessage: "Looks like all Stores are closed",
                     onProductCardTapped: onProductCardTapped,

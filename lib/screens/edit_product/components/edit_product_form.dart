@@ -211,7 +211,7 @@ class _EditProductFormState extends State<EditProductForm> {
       child: ExpansionTile(
         maintainState: true,
         title: Text(
-          "Describe Package",
+          "Describe Product",
           style: Theme.of(context).textTheme.headline6,
         ),
         leading: Icon(
@@ -291,7 +291,7 @@ class _EditProductFormState extends State<EditProductForm> {
       childrenPadding:
           EdgeInsets.symmetric(vertical: getProportionateScreenHeight(20)),
       children: [
-        Text("Your package will be searched for this Tags"),
+        Text("Your product will be searched for this Tags"),
         SizedBox(height: getProportionateScreenHeight(15)),
         buildProductSearchTags(),
       ],
@@ -359,7 +359,7 @@ class _EditProductFormState extends State<EditProductForm> {
       controller: titleFieldController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "e.g., Grand Canyon Tour",
+        hintText: "e.g., Samsung Galaxy F41 Mobile",
         labelText: "Product Title",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
@@ -378,7 +378,7 @@ class _EditProductFormState extends State<EditProductForm> {
       controller: variantFieldController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "e.g., Helicopter",
+        hintText: "e.g., Fusion Green",
         labelText: "Variant",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
@@ -398,7 +398,7 @@ class _EditProductFormState extends State<EditProductForm> {
       keyboardType: TextInputType.multiline,
       decoration: InputDecoration(
         hintText:
-            "e.g.,  Lake Titiwangsa | Genting Highlands | Templer Park",
+            "e.g., RAM: 4GB | Front Camera: 30MP | Rear Camera: Quad Camera Setup",
         labelText: "Highlights",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
@@ -419,7 +419,7 @@ class _EditProductFormState extends State<EditProductForm> {
       keyboardType: TextInputType.multiline,
       decoration: InputDecoration(
         hintText:
-            "e.g., One of SOWOOZOO's hallmark tours takes ...",
+            "e.g., This a flagship phone under made in India, by Samsung. With this device, Samsung introduces its new F Series.",
         labelText: "Description",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
@@ -439,7 +439,7 @@ class _EditProductFormState extends State<EditProductForm> {
       controller: sellerFieldController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "e.g., SOWOOZOO SDN BHD",
+        hintText: "e.g., HighTech Traders",
         labelText: "Seller",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
@@ -459,7 +459,7 @@ class _EditProductFormState extends State<EditProductForm> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         hintText: "e.g., 5999.0",
-        labelText: "Original Price (in RM)",
+        labelText: "Original Price (in INR)",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (_) {
@@ -478,7 +478,7 @@ class _EditProductFormState extends State<EditProductForm> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         hintText: "e.g., 2499.0",
-        labelText: "Discount Price (in RM)",
+        labelText: "Discount Price (in INR)",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (_) {
@@ -503,7 +503,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (validateDescribeProductForm() == false) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Errors in Describe Packages Form"),
+          content: Text("Errors in Describe Product Form"),
         ),
       );
       return;
