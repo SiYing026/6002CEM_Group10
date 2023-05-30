@@ -30,32 +30,32 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final productCategories = <Map>[
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Helicopter.svg",
-      TITLE_KEY: "Helicopter",
-      PRODUCT_TYPE_KEY: ProductType.Helicopter,
+      ICON_KEY: "assets/icons/Electronics.svg",
+      TITLE_KEY: "Electronics",
+      PRODUCT_TYPE_KEY: ProductType.Electronics,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/CruiseShip.png",
-      TITLE_KEY: "CruiseShip",
-      PRODUCT_TYPE_KEY: ProductType.CruiseShip,
+      ICON_KEY: "assets/icons/Books.svg",
+      TITLE_KEY: "Books",
+      PRODUCT_TYPE_KEY: ProductType.Books,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/HotAirBalloon.svg",
-      TITLE_KEY: "HotAirBalloon",
-      PRODUCT_TYPE_KEY: ProductType.HotAirBalloon,
+      ICON_KEY: "assets/icons/Fashion.svg",
+      TITLE_KEY: "Fashion",
+      PRODUCT_TYPE_KEY: ProductType.Fashion,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Paragliding.png",
-      TITLE_KEY: "Paragliding",
-      PRODUCT_TYPE_KEY: ProductType.Paragliding,
+      ICON_KEY: "assets/icons/Groceries.svg",
+      TITLE_KEY: "Groceries",
+      PRODUCT_TYPE_KEY: ProductType.Groceries,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/WhitewaterRafting.png",
-      TITLE_KEY: "WhitewaterRafting",
-      PRODUCT_TYPE_KEY: ProductType.WhitewaterRafting,
+      ICON_KEY: "assets/icons/Art.svg",
+      TITLE_KEY: "Art",
+      PRODUCT_TYPE_KEY: ProductType.Art,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Others.png",
+      ICON_KEY: "assets/icons/Others.svg",
       TITLE_KEY: "Others",
       PRODUCT_TYPE_KEY: ProductType.Others,
     },
