@@ -2,11 +2,11 @@ import 'package:e_commerce_app_flutter/models/Model.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 enum ProductType {
-  Helicopter,
-  CruiseShip,
-  HotAirBalloon,
-  Paragliding,
-  WhitewaterRafting,
+  Electronics,
+  Books,
+  Fashion,
+  Groceries,
+  Art,
   Others,
 }
 
