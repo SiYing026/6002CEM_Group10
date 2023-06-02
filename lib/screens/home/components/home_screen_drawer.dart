@@ -1,6 +1,5 @@
 import 'package:e_commerce_app_flutter/components/async_progress_dialog.dart';
 import 'package:e_commerce_app_flutter/constants.dart';
-import 'package:e_commerce_app_flutter/screens/about_developer/about_developer_screen.dart';
 import 'package:e_commerce_app_flutter/screens/change_display_picture/change_display_picture_screen.dart';
 import 'package:e_commerce_app_flutter/screens/change_email/change_email_screen.dart';
 import 'package:e_commerce_app_flutter/screens/change_password/change_password_screen.dart';
@@ -14,7 +13,6 @@ import 'package:e_commerce_app_flutter/services/database/user_database_helper.da
 import 'package:e_commerce_app_flutter/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:future_progress_dialog/future_progress_dialog.dart';
 import 'package:logger/logger.dart';
 import '../../change_display_name/change_display_name_screen.dart';
 
@@ -121,21 +119,6 @@ class HomeScreenDrawer extends StatelessWidget {
           ),
           buildSellerExpansionTile(context),
           ListTile(
-            leading: Icon(Icons.info),
-            title: Text(
-              "About Developer",
-              style: TextStyle(fontSize: 16, color: Colors.black),
-            ),
-            onTap: () async {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AboutDeveloperScreen(),
-                ),
-              );
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.logout),
             title: Text(
               "Sign out",
@@ -143,7 +126,7 @@ class HomeScreenDrawer extends StatelessWidget {
             ),
             onTap: () async {
               final confirmation =
-                  await showConfirmationDialog(context, "Confirm Sign out ?");
+              await showConfirmationDialog(context, "Confirm Sign out ?");
               if (confirmation) AuthentificationService().signOut();
             },
           ),
@@ -289,6 +272,12 @@ class HomeScreenDrawer extends StatelessWidget {
   }
 
   Widget buildSellerExpansionTile(BuildContext context) {
+    String currentUserEmail = AuthentificationService().currentUser.uid;
+    if (currentUserEmail != "NeCZpx1zyoPqrwbv7V1AabSdJzD3" &&
+        currentUserEmail != "p3Ag6cUHp0Tqf80qMrsKs9jog7k1") {
+      return SizedBox.shrink(); // Return an empty widget if the user's email is not allowed
+    }
+
     return ExpansionTile(
       leading: Icon(Icons.business),
       title: Text(
