@@ -48,7 +48,7 @@ class HomeScreenDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.edit_location),
             title: Text(
-              "Manage Addresses",
+              "Manage Information",
               style: TextStyle(fontSize: 16, color: Colors.black),
             ),
             onTap: () async {
@@ -287,7 +287,7 @@ class HomeScreenDrawer extends StatelessWidget {
       children: [
         ListTile(
           title: Text(
-            "Add New Product",
+            "Add New Packages",
             style: TextStyle(
               color: Colors.black,
               fontSize: 15,

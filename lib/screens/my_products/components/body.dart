@@ -51,7 +51,7 @@ class _BodyState extends State<Body> {
               child: Column(
                 children: [
                   SizedBox(height: getProportionateScreenHeight(20)),
-                  Text("Your Products", style: headingStyle),
+                  Text("Your Packages", style: headingStyle),
                   Text(
                     "Swipe LEFT to Edit, Swipe RIGHT to Delete",
                     style: TextStyle(fontSize: 12),
