@@ -26,6 +26,25 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  TextEditingController dateController = TextEditingController();
+  DateTime selectedDate;
+
+  Future<void> _selectDate() async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2090),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        dateController.text = picked.toString().substring(0, 10);
+      });
+    }
+  }
+
   final CartItemsStream cartItemsStream = CartItemsStream();
   PersistentBottomSheetController bottomSheetHandler;
   @override
@@ -97,6 +116,11 @@ class _BodyState extends State<Body> {
 
           return Column(
             children: [
+              Text(
+                "Swipe LEFT to Edit, Swipe RIGHT to Delete",
+                style: TextStyle(fontSize: 12),
+              ),
+              SizedBox(height: getProportionateScreenHeight(20)),
               DefaultButton(
                 text: "Proceed to Payment",
                 press: () {
@@ -216,86 +240,107 @@ class _BodyState extends State<Body> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             Product product = snapshot.data;
-            return Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            return Column(
               children: [
-                Expanded(
-                  flex: 8,
-                  child: ProductShortDetailCard(
-                    productId: product.id,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductDetailsScreen(
-                            productId: product.id,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(width: 12),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 2,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: kTextColor.withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          child: Icon(
-                            Icons.arrow_drop_up,
-                            color: kTextColor,
-                          ),
-                          onTap: () async {
-                            await arrowUpCallback(cartItemId);
-                          },
-                        ),
-                        SizedBox(height: 8),
-                        FutureBuilder<CartItem>(
-                          future: UserDatabaseHelper()
-                              .getCartItemFromId(cartItemId),
-                          builder: (context, snapshot) {
-                            int itemCount = 0;
-                            if (snapshot.hasData) {
-                              final cartItem = snapshot.data;
-                              itemCount = cartItem.itemCount;
-                            } else if (snapshot.hasError) {
-                              final error = snapshot.error.toString();
-                              Logger().e(error);
-                            }
-                            return Text(
-                              "$itemCount",
-                              style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w900,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex: 8,
+                      child: ProductShortDetailCard(
+                        productId: product.id,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailsScreen(
+                                productId: product.id,
                               ),
-                            );
-                          },
-                        ),
-                        SizedBox(height: 8),
-                        InkWell(
-                          child: Icon(
-                            Icons.arrow_drop_down,
-                            color: kTextColor,
-                          ),
-                          onTap: () async {
-                            await arrowDownCallback(cartItemId);
-                          },
-                        ),
-                      ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                  ),
+                    SizedBox(width: 12),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 2,
+                          vertical: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color: kTextColor.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              child: Icon(
+                                Icons.arrow_drop_up,
+                                color: kTextColor,
+                              ),
+                              onTap: () async {
+                                await arrowUpCallback(cartItemId);
+                              },
+                            ),
+                            SizedBox(height: 8),
+                            FutureBuilder<CartItem>(
+                              future: UserDatabaseHelper()
+                                  .getCartItemFromId(cartItemId),
+                              builder: (context, snapshot) {
+                                int itemCount = 0;
+                                if (snapshot.hasData) {
+                                  final cartItem = snapshot.data;
+                                  itemCount = cartItem.itemCount;
+                                } else if (snapshot.hasError) {
+                                  final error = snapshot.error.toString();
+                                  Logger().e(error);
+                                }
+                                return Text(
+                                  "$itemCount",
+                                  style: TextStyle(
+                                    color: kPrimaryColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                );
+                              },
+                            ),
+                            SizedBox(height: 8),
+                            InkWell(
+                              child: Icon(
+                                Icons.arrow_drop_down,
+                                color: kTextColor,
+                              ),
+                              onTap: () async {
+                                await arrowDownCallback(cartItemId);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: _selectDate,
+                      icon: Icon(Icons.calendar_today),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        controller: dateController,
+                        enabled: false,
+                        decoration: InputDecoration(
+                            labelText: 'Selected Date',
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ],
             );
@@ -356,7 +401,7 @@ class _BodyState extends State<Body> {
     shutBottomSheet();
     final confirmation = await showConfirmationDialog(
       context,
-      "This is just a Project Testing App so, no actual Payment Interface is available.\nDo you want to proceed for Mock Ordering of Products?",
+      "This is just a Project Testing App so, no actual Payment Interface is available.\nDo you want to proceed for Mock Ordering of Packages?",
     );
     if (confirmation == false) {
       return;
@@ -378,7 +423,7 @@ class _BodyState extends State<Body> {
           addedProductsToMyProducts =
               await UserDatabaseHelper().addToMyOrders(orderedProducts);
           if (addedProductsToMyProducts) {
-            snackbarmMessage = "Products ordered Successfully";
+            snackbarmMessage = "Packages ordered Successfully";
           } else {
             throw "Could not order products due to unknown issue";
           }

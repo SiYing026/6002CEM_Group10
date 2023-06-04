@@ -23,6 +23,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final OrderedProductsStream orderedProductsStream = OrderedProductsStream();
 
+
   @override
   void initState() {
     super.initState();
@@ -157,22 +158,44 @@ class _BodyState extends State<Body> {
                       topRight: Radius.circular(16),
                     ),
                   ),
-                  child: Text.rich(
-                    TextSpan(
-                      text: "Ordered on:  ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                      ),
-                      children: [
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text.rich(
                         TextSpan(
-                          text: orderedProduct.orderDate,
+                          text: "Ordered on:  ",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 12,
                           ),
+                          children: [
+                            TextSpan(
+                              text: orderedProduct.orderDate,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Text.rich(
+                        TextSpan(
+                          text: "Booking date:  ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: orderedProduct.bookingDate,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Container(
@@ -197,11 +220,13 @@ class _BodyState extends State<Body> {
                             productId: product.id,
                           ),
                         ),
+
                       ).then((_) async {
                         await refreshPage();
                       });
                     },
                   ),
+
                 ),
                 Container(
                   width: double.infinity,
@@ -216,6 +241,7 @@ class _BodyState extends State<Body> {
                       bottomRight: Radius.circular(16),
                     ),
                   ),
+
                   child: TextButton(
                     onPressed: () async {
                       String currentUserUid =
@@ -275,7 +301,7 @@ class _BodyState extends State<Body> {
                       await refreshPage();
                     },
                     child: Text(
-                      "Give Product Review",
+                      "Give Packages Review",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
