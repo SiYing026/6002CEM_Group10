@@ -98,7 +98,7 @@ class _EditProductFormState extends State<EditProductForm> {
         buildProductSearchTagsTile(),
         SizedBox(height: getProportionateScreenHeight(80)),
         DefaultButton(
-            text: "Save Product",
+            text: "Save Packages",
             press: () {
               saveProductButtonCallback(context);
             }),
@@ -264,7 +264,7 @@ class _EditProductFormState extends State<EditProductForm> {
                 )
                 .toList(),
             hint: Text(
-              "Chose Product Type",
+              "Choose Product Type",
             ),
             style: TextStyle(
               color: kTextColor,

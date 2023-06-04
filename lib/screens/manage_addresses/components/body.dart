@@ -47,7 +47,7 @@ class _BodyState extends State<Body> {
                 children: [
                   SizedBox(height: getProportionateScreenHeight(10)),
                   Text(
-                    "Manage Addresses",
+                    "Manage Information",
                     style: headingStyle,
                   ),
                   Text(
@@ -157,7 +157,7 @@ class _BodyState extends State<Body> {
         if (status == true) {
           snackbarMessage = "Address deleted successfully";
         } else {
-          throw "Coulnd't delete address due to unknown reason";
+          throw "Couldn't delete address due to unknown reason";
         }
       } on FirebaseException catch (e) {
         Logger().w("Firebase Exception: $e");

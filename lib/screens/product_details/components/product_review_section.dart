@@ -28,7 +28,7 @@ class ProductReviewsSection extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "Product Reviews",
+                  "Packages Reviews",
                   style: TextStyle(
                     fontSize: 21,
                     color: Colors.black,
