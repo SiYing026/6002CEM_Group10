@@ -98,7 +98,7 @@ class _EditProductFormState extends State<EditProductForm> {
         buildProductSearchTagsTile(),
         SizedBox(height: getProportionateScreenHeight(80)),
         DefaultButton(
-            text: "Save Product",
+            text: "Save Packages",
             press: () {
               saveProductButtonCallback(context);
             }),
@@ -264,7 +264,7 @@ class _EditProductFormState extends State<EditProductForm> {
                 )
                 .toList(),
             hint: Text(
-              "Chose Product Type",
+              "Choose Package Type",
             ),
             style: TextStyle(
               color: kTextColor,
@@ -512,7 +512,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (productDetails.selectedImages.length < 1) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Upload atleast One Image of Product"),
+          content: Text("Upload atleast One Image of Packages"),
         ),
       );
       return;
