@@ -41,9 +41,9 @@ class _SignUpFormState extends State<SignUpForm> {
         child: Column(
           children: [
             buildEmailFormField(),
-            SizedBox(height: getProportionateScreenHeight(30)),
+            SizedBox(height: getProportionateScreenHeight(40)),
             buildPasswordFormField(),
-            SizedBox(height: getProportionateScreenHeight(30)),
+            SizedBox(height: getProportionateScreenHeight(40)),
             buildConfirmPasswordFormField(),
             SizedBox(height: getProportionateScreenHeight(40)),
             DefaultButton(
@@ -88,7 +88,7 @@ class _SignUpFormState extends State<SignUpForm> {
       controller: emailFieldController,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        hintText: "Enter your email",
+        hintText: "Please enter your email",
         labelText: "Email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(
@@ -112,7 +112,7 @@ class _SignUpFormState extends State<SignUpForm> {
       controller: passwordFieldController,
       obscureText: true,
       decoration: InputDecoration(
-        hintText: "Enter your password",
+        hintText: "Please enter your password",
         labelText: "Password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(

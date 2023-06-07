@@ -4,11 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class ProductTypeBox extends StatelessWidget {
+class PackageTypeBox extends StatelessWidget {
   final String icon;
   final String title;
   final VoidCallback onPress;
-  const ProductTypeBox({
+  const PackageTypeBox({
     Key key,
     @required this.icon,
     @required this.title,

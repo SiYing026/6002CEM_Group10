@@ -183,7 +183,7 @@ class _BodyState extends State<Body> {
         if (direction == DismissDirection.startToEnd) {
           final confirmation = await showConfirmationDialog(
             context,
-            "Remove Product from Cart?",
+            "Remove Package from Cart?",
           );
           if (confirmation) {
             if (direction == DismissDirection.startToEnd) {
@@ -193,10 +193,10 @@ class _BodyState extends State<Body> {
                 result = await UserDatabaseHelper()
                     .removeProductFromCart(cartItemId);
                 if (result == true) {
-                  snackbarMessage = "Product removed from cart successfully";
+                  snackbarMessage = "Package removed from cart successfully";
                   await refreshPage();
                 } else {
-                  throw "Coulnd't remove product from cart due to unknown reason";
+                  throw "Couldn't remove package from cart due to unknown reason";
                 }
               } on FirebaseException catch (e) {
                 Logger().w("Firebase Exception: $e");
