@@ -30,34 +30,35 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final productCategories = <Map>[
     <String, dynamic>{
+
       ICON_KEY: "assets/icons/Helicopter.svg",
       TITLE_KEY: "Helicopter",
-      PRODUCT_TYPE_KEY: ProductType.Helicopter,
+      PRODUCT_TYPE_KEY: PackageType.Helicopter,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/CruiseShip.svg",
       TITLE_KEY: "Cruise Ship",
-      PRODUCT_TYPE_KEY: ProductType.CruiseShip,
+      PRODUCT_TYPE_KEY: PackageType.CruiseShip,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/HotAirBalloon.svg",
       TITLE_KEY: "Hot Air Balloon",
-      PRODUCT_TYPE_KEY: ProductType.HotAirBalloon,
+      PRODUCT_TYPE_KEY: PackageType.HotAirBalloon,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Paragliding.svg",
       TITLE_KEY: "Paragliding",
-      PRODUCT_TYPE_KEY: ProductType.Paragliding,
+      PRODUCT_TYPE_KEY: PackageType.Paragliding,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/WhitewaterRafting.svg",
       TITLE_KEY: "Whitewater Rafting",
-      PRODUCT_TYPE_KEY: ProductType.WhitewaterRafting,
+      PRODUCT_TYPE_KEY: PackageType.WhitewaterRafting,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Others.svg",
       TITLE_KEY: "Others",
-      PRODUCT_TYPE_KEY: ProductType.Others,
+      PRODUCT_TYPE_KEY: PackageType.Others,
     },
   ];
 
@@ -171,7 +172,7 @@ class _BodyState extends State<Body> {
                         ...List.generate(
                           productCategories.length,
                           (index) {
-                            return ProductTypeBox(
+                            return PackageTypeBox(
                               icon: productCategories[index][ICON_KEY],
                               title: productCategories[index][TITLE_KEY],
                               onPress: () {
@@ -180,7 +181,7 @@ class _BodyState extends State<Body> {
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         CategoryProductsScreen(
-                                      productType: productCategories[index]
+                                      packageType: productCategories[index]
                                           [PRODUCT_TYPE_KEY],
                                     ),
                                   ),

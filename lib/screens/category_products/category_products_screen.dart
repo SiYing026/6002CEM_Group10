@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'components/body.dart';
 
 class CategoryProductsScreen extends StatelessWidget {
-  final ProductType productType;
+  final PackageType packageType;
 
   const CategoryProductsScreen({
     Key key,
-    @required this.productType,
+    @required this.packageType,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Body(
-        productType: productType,
+        packageType: packageType,
       ),
     );
   }
