@@ -253,9 +253,9 @@ class _BodyState extends State<Body> {
                               .addProductReview(product.id, result);
                           if (reviewAdded == true) {
                             snackbarMessage =
-                                "Product review added successfully";
+                                "Package review added successfully";
                           } else {
-                            throw "Coulnd't add product review due to unknown reason";
+                            throw "Couldn't add package review due to unknown reason";
                           }
                         } on FirebaseException catch (e) {
                           Logger().w("Firebase Exception: $e");
@@ -275,7 +275,7 @@ class _BodyState extends State<Body> {
                       await refreshPage();
                     },
                     child: Text(
-                      "Give Product Review",
+                      "Give Package Review",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,

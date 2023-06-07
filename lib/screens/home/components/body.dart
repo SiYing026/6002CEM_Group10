@@ -32,32 +32,32 @@ class _BodyState extends State<Body> {
     <String, dynamic>{
       ICON_KEY: "assets/icons/Electronics.svg",
       TITLE_KEY: "Electronics",
-      PRODUCT_TYPE_KEY: ProductType.Electronics,
+      PRODUCT_TYPE_KEY: PackageType.Electronics,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Books.svg",
       TITLE_KEY: "Books",
-      PRODUCT_TYPE_KEY: ProductType.Books,
+      PRODUCT_TYPE_KEY: PackageType.Books,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Fashion.svg",
       TITLE_KEY: "Fashion",
-      PRODUCT_TYPE_KEY: ProductType.Fashion,
+      PRODUCT_TYPE_KEY: PackageType.Fashion,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Groceries.svg",
       TITLE_KEY: "Groceries",
-      PRODUCT_TYPE_KEY: ProductType.Groceries,
+      PRODUCT_TYPE_KEY: PackageType.Groceries,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Art.svg",
       TITLE_KEY: "Art",
-      PRODUCT_TYPE_KEY: ProductType.Art,
+      PRODUCT_TYPE_KEY: PackageType.Art,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Others.svg",
       TITLE_KEY: "Others",
-      PRODUCT_TYPE_KEY: ProductType.Others,
+      PRODUCT_TYPE_KEY: PackageType.Others,
     },
   ];
 
@@ -171,7 +171,7 @@ class _BodyState extends State<Body> {
                         ...List.generate(
                           productCategories.length,
                           (index) {
-                            return ProductTypeBox(
+                            return PackageTypeBox(
                               icon: productCategories[index][ICON_KEY],
                               title: productCategories[index][TITLE_KEY],
                               onPress: () {
@@ -180,7 +180,7 @@ class _BodyState extends State<Body> {
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         CategoryProductsScreen(
-                                      productType: productCategories[index]
+                                      packageType: productCategories[index]
                                           [PRODUCT_TYPE_KEY],
                                     ),
                                   ),

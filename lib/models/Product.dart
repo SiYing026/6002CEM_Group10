@@ -1,7 +1,7 @@
 import 'package:e_commerce_app_flutter/models/Model.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
-enum ProductType {
+enum PackageType {
   Electronics,
   Books,
   Fashion,
@@ -35,7 +35,7 @@ class Product extends Model {
   String seller;
   bool favourite;
   String owner;
-  ProductType productType;
+  PackageType packageType;
   List<String> searchTags;
 
   Product(
@@ -43,7 +43,7 @@ class Product extends Model {
     this.images,
     this.title,
     this.variant,
-    this.productType,
+    this.packageType,
     this.discountPrice,
     this.originalPrice,
     this.rating = 0.0,
@@ -69,8 +69,8 @@ class Product extends Model {
       images: (map[IMAGES_KEY] ?? []).cast<String>(),
       title: map[TITLE_KEY],
       variant: map[VARIANT_KEY],
-      productType:
-          EnumToString.fromString(ProductType.values, map[PRODUCT_TYPE_KEY]),
+      packageType:
+          EnumToString.fromString(PackageType.values, map[PRODUCT_TYPE_KEY]),
       discountPrice: map[DISCOUNT_PRICE_KEY],
       originalPrice: map[ORIGINAL_PRICE_KEY],
       rating: map[RATING_KEY],
@@ -88,7 +88,7 @@ class Product extends Model {
       IMAGES_KEY: images,
       TITLE_KEY: title,
       VARIANT_KEY: variant,
-      PRODUCT_TYPE_KEY: EnumToString.convertToString(productType),
+      PRODUCT_TYPE_KEY: EnumToString.convertToString(packageType),
       DISCOUNT_PRICE_KEY: discountPrice,
       ORIGINAL_PRICE_KEY: originalPrice,
       RATING_KEY: rating,
@@ -114,8 +114,8 @@ class Product extends Model {
     if (highlights != null) map[HIGHLIGHTS_KEY] = highlights;
     if (description != null) map[DESCRIPTION_KEY] = description;
     if (seller != null) map[SELLER_KEY] = seller;
-    if (productType != null)
-      map[PRODUCT_TYPE_KEY] = EnumToString.convertToString(productType);
+    if (packageType != null)
+      map[PRODUCT_TYPE_KEY] = EnumToString.convertToString(packageType);
     if (owner != null) map[OWNER_KEY] = owner;
     if (searchTags != null) map[SEARCH_TAGS_KEY] = searchTags;
 

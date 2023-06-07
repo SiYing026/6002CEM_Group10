@@ -23,16 +23,16 @@ class ProductDatabaseHelper {
   }
 
   Future<List<String>> searchInProducts(String query,
-      {ProductType productType}) async {
+      {PackageType packageType}) async {
     Query queryRef;
-    if (productType == null) {
+    if (packageType == null) {
       queryRef = firestore.collection(PRODUCTS_COLLECTION_NAME);
     } else {
-      final productTypeStr = EnumToString.convertToString(productType);
-      print(productTypeStr);
+      final packageTypeStr = EnumToString.convertToString(packageType);
+      print(packageTypeStr);
       queryRef = firestore
           .collection(PRODUCTS_COLLECTION_NAME)
-          .where(Product.PRODUCT_TYPE_KEY, isEqualTo: productTypeStr);
+          .where(Product.PRODUCT_TYPE_KEY, isEqualTo: packageTypeStr);
     }
 
     Set productsId = Set<String>();
@@ -169,7 +169,7 @@ class ProductDatabaseHelper {
         firestore.collection(PRODUCTS_COLLECTION_NAME);
     final docRef = productsCollectionReference.doc(product.id);
     await docRef.update(productMap);
-    if (product.productType != null) {
+    if (product.packageType != null) {
       await docRef.update({
         Product.SEARCH_TAGS_KEY: FieldValue.arrayUnion(
             [productMap[Product.PRODUCT_TYPE_KEY].toString().toLowerCase()])
@@ -178,12 +178,12 @@ class ProductDatabaseHelper {
     return docRef.id;
   }
 
-  Future<List<String>> getCategoryProductsList(ProductType productType) async {
+  Future<List<String>> getCategoryProductsList(PackageType packageType) async {
     final productsCollectionReference =
         firestore.collection(PRODUCTS_COLLECTION_NAME);
     final queryResult = await productsCollectionReference
         .where(Product.PRODUCT_TYPE_KEY,
-            isEqualTo: EnumToString.convertToString(productType))
+            isEqualTo: EnumToString.convertToString(packageType))
         .get();
     List productsId = List<String>();
     for (final product in queryResult.docs) {

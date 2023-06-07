@@ -15,16 +15,16 @@ import 'package:flutter/widgets.dart';
 import 'package:logger/logger.dart';
 
 class Body extends StatefulWidget {
-  final ProductType productType;
+  final PackageType packageType;
 
   Body({
     Key key,
-    @required this.productType,
+    @required this.packageType,
   }) : super(key: key);
 
   @override
   _BodyState createState() =>
-      _BodyState(categoryProductsStream: CategoryProductsStream(productType));
+      _BodyState(categoryProductsStream: CategoryProductsStream(packageType));
 }
 
 class _BodyState extends State<Body> {
@@ -77,7 +77,7 @@ class _BodyState extends State<Body> {
                             return Center(
                               child: NothingToShowContainer(
                                 secondaryMessage:
-                                    "No Products in ${EnumToString.convertToString(widget.productType)}",
+                                    "No Packcage in ${EnumToString.convertToString(widget.packageType)}",
                               ),
                             );
                           }
@@ -132,7 +132,7 @@ class _BodyState extends State<Body> {
               try {
                 searchedProductsId = await ProductDatabaseHelper()
                     .searchInProducts(query.toLowerCase(),
-                        productType: widget.productType);
+                        packageType: widget.packageType);
                 if (searchedProductsId != null) {
                   await Navigator.push(
                     context,
@@ -141,7 +141,7 @@ class _BodyState extends State<Body> {
                         searchQuery: query,
                         searchResultProductsId: searchedProductsId,
                         searchIn:
-                            EnumToString.convertToString(widget.productType),
+                            EnumToString.convertToString(widget.packageType),
                       ),
                     ),
                   );
@@ -176,7 +176,7 @@ class _BodyState extends State<Body> {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(bannerFromProductType()),
+              image: AssetImage(bannerFromPackageType()),
               fit: BoxFit.fill,
               colorFilter: ColorFilter.mode(
                 kPrimaryColor,
@@ -191,7 +191,7 @@ class _BodyState extends State<Body> {
           child: Padding(
             padding: const EdgeInsets.only(left: 16),
             child: Text(
-              EnumToString.convertToString(widget.productType),
+              EnumToString.convertToString(widget.packageType),
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
@@ -251,19 +251,19 @@ class _BodyState extends State<Body> {
     );
   }
 
-  String bannerFromProductType() {
-    switch (widget.productType) {
-      case ProductType.Electronics:
+  String bannerFromPackageType() {
+    switch (widget.packageType) {
+      case PackageType.Electronics:
         return "assets/images/electronics_banner.jpg";
-      case ProductType.Books:
+      case PackageType.Books:
         return "assets/images/books_banner.jpg";
-      case ProductType.Fashion:
+      case PackageType.Fashion:
         return "assets/images/fashions_banner.jpg";
-      case ProductType.Groceries:
+      case PackageType.Groceries:
         return "assets/images/groceries_banner.jpg";
-      case ProductType.Art:
+      case PackageType.Art:
         return "assets/images/arts_banner.jpg";
-      case ProductType.Others:
+      case PackageType.Others:
         return "assets/images/others_banner.jpg";
       default:
         return "assets/images/others_banner.jpg";
