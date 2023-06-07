@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_app_flutter/components/default_button.dart';
-import 'package:e_commerce_app_flutter/models/Address.dart';
+import 'package:e_commerce_app_flutter/models/Info.dart';
 import 'package:e_commerce_app_flutter/services/database/user_database_helper.dart';
 import 'package:e_commerce_app_flutter/size_config.dart';
 import 'package:flutter/material.dart';
@@ -8,23 +8,23 @@ import 'package:logger/logger.dart';
 import 'package:string_validator/string_validator.dart';
 import '../../../constants.dart';
 
-class AddressDetailsForm extends StatefulWidget {
-  final Address addressToEdit;
-  AddressDetailsForm({
+class InfoDetailsForm extends StatefulWidget {
+  final Info infoToEdit;
+  InfoDetailsForm({
     Key key,
-    this.addressToEdit,
+    this.infoToEdit,
   }) : super(key: key);
 
   @override
-  _AddressDetailsFormState createState() => _AddressDetailsFormState();
+  _InfoDetailsFormState createState() => _InfoDetailsFormState();
 }
 
-class _AddressDetailsFormState extends State<AddressDetailsForm> {
+class _InfoDetailsFormState extends State<InfoDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController titleFieldController = TextEditingController();
 
-  final TextEditingController receiverFieldController = TextEditingController();
+  final TextEditingController nameFieldController = TextEditingController();
 
   final TextEditingController addressLine1FieldController =
       TextEditingController();
@@ -34,11 +34,7 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
 
   final TextEditingController cityFieldController = TextEditingController();
 
-  final TextEditingController districtFieldController = TextEditingController();
-
-  final TextEditingController stateFieldController = TextEditingController();
-
-  final TextEditingController landmarkFieldController = TextEditingController();
+  final TextEditingController emailFieldController = TextEditingController();
 
   final TextEditingController pincodeFieldController = TextEditingController();
 
@@ -47,13 +43,11 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
   @override
   void dispose() {
     titleFieldController.dispose();
-    receiverFieldController.dispose();
+    nameFieldController.dispose();
     addressLine1FieldController.dispose();
     addressLine2FieldController.dispose();
     cityFieldController.dispose();
-    stateFieldController.dispose();
-    districtFieldController.dispose();
-    landmarkFieldController.dispose();
+    emailFieldController.dispose();
     pincodeFieldController.dispose();
     phoneFieldController.dispose();
     super.dispose();
@@ -68,7 +62,7 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           buildTitleField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildReceiverField(),
+          buildNameField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildAddressLine1Field(),
           SizedBox(height: getProportionateScreenHeight(30)),
@@ -76,36 +70,30 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
           SizedBox(height: getProportionateScreenHeight(30)),
           buildCityField(),
           SizedBox(height: getProportionateScreenHeight(30)),
-          buildDistrictField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildStateField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
-          buildLandmarkField(),
+          buildEmailField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPincodeField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPhoneField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           DefaultButton(
-            text: "Save Address",
-            press: widget.addressToEdit == null
-                ? saveNewAddressButtonCallback
-                : saveEditedAddressButtonCallback,
+            text: "Save Information",
+            press: widget.infoToEdit == null
+                ? saveNewInfoButtonCallback
+                : saveEditedInfoButtonCallback,
           ),
         ],
       ),
     );
-    if (widget.addressToEdit != null) {
-      titleFieldController.text = widget.addressToEdit.title;
-      receiverFieldController.text = widget.addressToEdit.receiver;
-      addressLine1FieldController.text = widget.addressToEdit.addresLine1;
-      addressLine2FieldController.text = widget.addressToEdit.addressLine2;
-      cityFieldController.text = widget.addressToEdit.city;
-      districtFieldController.text = widget.addressToEdit.district;
-      stateFieldController.text = widget.addressToEdit.state;
-      landmarkFieldController.text = widget.addressToEdit.landmark;
-      pincodeFieldController.text = widget.addressToEdit.pincode;
-      phoneFieldController.text = widget.addressToEdit.phone;
+    if (widget.infoToEdit != null) {
+      titleFieldController.text = widget.infoToEdit.title;
+      nameFieldController.text = widget.infoToEdit.name;
+      addressLine1FieldController.text = widget.infoToEdit.addressLine1;
+      addressLine2FieldController.text = widget.infoToEdit.addressLine2;
+      cityFieldController.text = widget.infoToEdit.city;
+      emailFieldController.text = widget.infoToEdit.email;
+      pincodeFieldController.text = widget.infoToEdit.pincode;
+      phoneFieldController.text = widget.infoToEdit.phone;
     }
     return form;
   }
@@ -116,8 +104,8 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
       keyboardType: TextInputType.name,
       maxLength: 8,
       decoration: InputDecoration(
-        hintText: "Enter a title for address",
-        labelText: "Title",
+        hintText: "Enter your nickname",
+        labelText: "Your Nickname",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {
@@ -130,17 +118,17 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
     );
   }
 
-  Widget buildReceiverField() {
+  Widget buildNameField() {
     return TextFormField(
-      controller: receiverFieldController,
+      controller: nameFieldController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "Enter Full Name of Receiver",
-        labelText: "Receiver Name",
+        hintText: "Enter Full Name",
+        labelText: "Your Name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {
-        if (receiverFieldController.text.isEmpty) {
+        if (nameFieldController.text.isEmpty) {
           return FIELD_REQUIRED_MSG;
         }
         return null;
@@ -206,36 +194,17 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
     );
   }
 
-  Widget buildDistrictField() {
+  Widget buildEmailField() {
     return TextFormField(
-      controller: districtFieldController,
+      controller: emailFieldController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "Enter District",
-        labelText: "District",
+        hintText: "Enter Email",
+        labelText: "Email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {
-        if (districtFieldController.text.isEmpty) {
-          return FIELD_REQUIRED_MSG;
-        }
-        return null;
-      },
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-    );
-  }
-
-  Widget buildStateField() {
-    return TextFormField(
-      controller: stateFieldController,
-      keyboardType: TextInputType.name,
-      decoration: InputDecoration(
-        hintText: "Enter State",
-        labelText: "State",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-      validator: (value) {
-        if (stateFieldController.text.isEmpty) {
+        if (emailFieldController.text.isEmpty) {
           return FIELD_REQUIRED_MSG;
         }
         return null;
@@ -267,25 +236,6 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
     );
   }
 
-  Widget buildLandmarkField() {
-    return TextFormField(
-      controller: landmarkFieldController,
-      keyboardType: TextInputType.name,
-      decoration: InputDecoration(
-        hintText: "Enter Landmark",
-        labelText: "Landmark",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-      validator: (value) {
-        if (landmarkFieldController.text.isEmpty) {
-          return FIELD_REQUIRED_MSG;
-        }
-        return null;
-      },
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-    );
-  }
-
   Widget buildPhoneField() {
     return TextFormField(
       controller: phoneFieldController,
@@ -307,19 +257,19 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
     );
   }
 
-  Future<void> saveNewAddressButtonCallback() async {
+  Future<void> saveNewInfoButtonCallback() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      final Address newAddress = generateAddressObject();
+      final Info newInfo = generateInfoObject();
       bool status = false;
       String snackbarMessage;
       try {
         status =
-            await UserDatabaseHelper().addAddressForCurrentUser(newAddress);
+            await UserDatabaseHelper().addInfoForCurrentUser(newInfo);
         if (status == true) {
-          snackbarMessage = "Address saved successfully";
+          snackbarMessage = "Information saved successfully";
         } else {
-          throw "Coundn't save the address due to unknown reason";
+          throw "Coundn't save the information due to unknown reason";
         }
       } on FirebaseException catch (e) {
         Logger().w("Firebase Exception: $e");
@@ -338,21 +288,21 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
     }
   }
 
-  Future<void> saveEditedAddressButtonCallback() async {
+  Future<void> saveEditedInfoButtonCallback() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      final Address newAddress =
-          generateAddressObject(id: widget.addressToEdit.id);
+      final Info newInfo =
+          generateInfoObject(id: widget.infoToEdit.id);
 
       bool status = false;
       String snackbarMessage;
       try {
         status =
-            await UserDatabaseHelper().updateAddressForCurrentUser(newAddress);
+            await UserDatabaseHelper().updateInfoForCurrentUser(newInfo);
         if (status == true) {
-          snackbarMessage = "Address updated successfully";
+          snackbarMessage = "Information updated successfully";
         } else {
-          throw "Couldn't update address due to unknown reason";
+          throw "Couldn't update information due to unknown reason";
         }
       } on FirebaseException catch (e) {
         Logger().w("Firebase Exception: $e");
@@ -371,17 +321,15 @@ class _AddressDetailsFormState extends State<AddressDetailsForm> {
     }
   }
 
-  Address generateAddressObject({String id}) {
-    return Address(
+  Info generateInfoObject({String id}) {
+    return Info(
       id: id,
       title: titleFieldController.text,
-      receiver: receiverFieldController.text,
-      addresLine1: addressLine1FieldController.text,
+      name: nameFieldController.text,
+      addressLine1: addressLine1FieldController.text,
       addressLine2: addressLine2FieldController.text,
       city: cityFieldController.text,
-      district: districtFieldController.text,
-      state: stateFieldController.text,
-      landmark: landmarkFieldController.text,
+      email: emailFieldController.text,
       pincode: pincodeFieldController.text,
       phone: phoneFieldController.text,
     );

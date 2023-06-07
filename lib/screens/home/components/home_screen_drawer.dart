@@ -5,7 +5,7 @@ import 'package:e_commerce_app_flutter/screens/change_email/change_email_screen.
 import 'package:e_commerce_app_flutter/screens/change_password/change_password_screen.dart';
 import 'package:e_commerce_app_flutter/screens/change_phone/change_phone_screen.dart';
 import 'package:e_commerce_app_flutter/screens/edit_product/edit_product_screen.dart';
-import 'package:e_commerce_app_flutter/screens/manage_addresses/manage_addresses_screen.dart';
+import 'package:e_commerce_app_flutter/screens/manage_info/manage_info_screen.dart';
 import 'package:e_commerce_app_flutter/screens/my_orders/my_orders_screen.dart';
 import 'package:e_commerce_app_flutter/screens/my_products/my_products_screen.dart';
 import 'package:e_commerce_app_flutter/services/authentification/authentification_service.dart';
@@ -76,7 +76,7 @@ class HomeScreenDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ManageAddressesScreen(),
+                  builder: (context) => ManageInfoScreen(),
                 ),
               );
             },
@@ -321,7 +321,7 @@ class HomeScreenDrawer extends StatelessWidget {
         ),
         ListTile(
           title: Text(
-            "Manage My Products",
+            "Manage My Packages",
             style: TextStyle(
               color: Colors.black,
               fontSize: 15,

@@ -1,14 +1,14 @@
 
 
 <div align="center" id="top"> 
-  <img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/assets/images/launcher_icon_with_bg.JPG?raw=true" alt="EShopee: Flutter eCommerce App" width="150" height="150"/>
+  <img src="https://github.com/rahul-badgujar/sowoozoo_ecommerce_app/blob/main/assets/images/launcher_icon_with_bg.png?raw=true" alt="SOWOOZOO: Flutter eCommerce App" width="150" height="150"/>
 
 &#xa0;
 
   <!-- <a href="https://e_commerce_app_flutter.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">EShopee: Flutter eCommerce App</h1>
+<h1 align="center">SOWOOZOO: Flutter eCommerce App</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/rahul-badgujar/e_commerce_app_flutter?color=56BEB8">
@@ -31,7 +31,7 @@
 ## Status
 
 <h4 align="center">
-	🚧  EShopee App 🚀 Migrating to V2 (Flutter 2.0)  🚧
+	🚧  SOWOOZOO Adventure App 🚀 Migrating to V2 (Flutter 2.0)  🚧
 </h4>
 
 <hr>
@@ -53,7 +53,7 @@ This is an eCommerce Application developed using FlutterFire (Flutter+Firebase).
 
 NOTE: Its tries to stimulate a mock buy-sell cycle as their is no any Payment Gateway added in this app.
 
-| <a href="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App" target="_blank"><img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/illustrations/source_code_icon.png?raw=true" width="90px"></a> | <a href="https://youtu.be/JX8Cf5qr_hE" target="_blank"><img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/illustrations/youtube_icon.png?raw=true" width="90px"></a> | <a href="https://drive.google.com/file/d/1b_vqGg9DN3_0vJAL6erI9n4D7xhBkL8_/view?usp=sharing" target="_blank"><img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/illustrations/application_icon.png?raw=true" width="90px"></a> |
+| <a href="https://github.com/rahul-badgujar/sowoozoo_ecommerce_app" target="_blank"><img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/illustrations/source_code_icon.png?raw=true" width="90px"></a> | <a href="https://youtu.be/JX8Cf5qr_hE" target="_blank"><img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/illustrations/youtube_icon.png?raw=true" width="90px"></a> | <a href="https://drive.google.com/file/d/1b_vqGg9DN3_0vJAL6erI9n4D7xhBkL8_/view?usp=sharing" target="_blank"><img src="https://github.com/rahul-badgujar/EShopee-Flutter-eCommerce-App/blob/main/illustrations/application_icon.png?raw=true" width="90px"></a> |
 |:---:|:---:|:---:|
 |            Source Code            |            Demo Video             |            Download APK             |
 
@@ -65,7 +65,7 @@ NOTE: Its tries to stimulate a mock buy-sell cycle as their is no any Payment Ga
 :heavy_check_mark: View products of Different Cateogories\
 :heavy_check_mark: Maintain Cart\
 :heavy_check_mark: Mark products as your favourites\
-:heavy_check_mark: Manage your Addresses\
+:heavy_check_mark: Manage your info\
 :heavy_check_mark: Review the products you buy
 
 ## :checkered_flag: Illustrations
@@ -80,9 +80,9 @@ Here are some Illustration of App Screens
 | :--------------------------------------: | :--------------------------------------: | :-------------------------------------: |
 |        Product Details Screen - 1        |        Product Details Screen - 2        |        Category Products Screen         |
 
-| ![](illustrations/manage_addresses.png) | ![](illustrations/address_dialog.png) | ![](illustrations/cart.png) |
+| ![](illustrations/manage_info.png) | ![](illustrations/address_dialog.png) | ![](illustrations/cart.png) |
 | :-------------------------------------: | :-----------------------------------: | :-------------------------: |
-|         Manage Addresses Screen         |            Address Dialog             |         Cart Screen         |
+|         Manage info Screen         |            Address Dialog             |         Cart Screen         |
 
 | ![](illustrations/my_orders.png) | ![](illustrations/my_products.png) | ![](illustrations/edit_product.png) |
 | :------------------------------: | :--------------------------------: | :---------------------------------: |

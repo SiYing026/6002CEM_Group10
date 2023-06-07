@@ -166,7 +166,7 @@ class _BodyState extends State<Body> {
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.startToEnd) {
           final confirmation = await showConfirmationDialog(
-              context, "Are you sure to Delete Product?");
+              context, "Are you sure to Delete Packages?");
           if (confirmation) {
             for (int i = 0; i < product.images.length; i++) {
               String path =
@@ -223,7 +223,7 @@ class _BodyState extends State<Body> {
           return confirmation;
         } else if (direction == DismissDirection.endToStart) {
           final confirmation = await showConfirmationDialog(
-              context, "Are you sure to Edit Product?");
+              context, "Are you sure to Edit Packages?");
           if (confirmation) {
             await Navigator.push(
               context,

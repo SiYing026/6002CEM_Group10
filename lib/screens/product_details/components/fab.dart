@@ -43,13 +43,14 @@ class AddToCartFAB extends StatelessWidget {
         }
         bool addedSuccessfully = false;
         String snackbarMessage;
+
         try {
           addedSuccessfully =
               await UserDatabaseHelper().addProductToCart(productId);
           if (addedSuccessfully == true) {
             snackbarMessage = "Product added successfully";
           } else {
-            throw "Coulnd't add product due to unknown reason";
+            throw "Couldn't add product due to unknown reason";
           }
         } on FirebaseException catch (e) {
           Logger().w("Firebase Exception: $e");
