@@ -1,11 +1,11 @@
 import 'package:e_commerce_app_flutter/services/data_streams/data_stream.dart';
 import 'package:e_commerce_app_flutter/services/database/user_database_helper.dart';
 
-class AddressesStream extends DataStream<List<String>> {
+class InfoStream extends DataStream<List<String>> {
   @override
   void reload() {
-    final addressesList = UserDatabaseHelper().addressesList;
-    addressesList.then((list) {
+    final infoList = UserDatabaseHelper().infoList;
+    infoList.then((list) {
       addData(list);
     }).catchError((e) {
       addError(e);

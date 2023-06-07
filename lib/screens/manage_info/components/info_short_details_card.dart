@@ -1,16 +1,16 @@
 import 'package:e_commerce_app_flutter/constants.dart';
-import 'package:e_commerce_app_flutter/models/Address.dart';
+import 'package:e_commerce_app_flutter/models/Info.dart';
 import 'package:e_commerce_app_flutter/services/database/user_database_helper.dart';
 import 'package:e_commerce_app_flutter/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class AddressShortDetailsCard extends StatelessWidget {
-  final String addressId;
+class InfoShortDetailsCard extends StatelessWidget {
+  final String infoId;
   final Function onTap;
 
-  const AddressShortDetailsCard(
-      {Key key, @required this.addressId, @required this.onTap})
+  const InfoShortDetailsCard(
+      {Key key, @required this.infoId, @required this.onTap})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,11 @@ class AddressShortDetailsCard extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         height: SizeConfig.screenHeight * 0.15,
-        child: FutureBuilder<Address>(
-          future: UserDatabaseHelper().getAddressFromId(addressId),
+        child: FutureBuilder<Info>(
+          future: UserDatabaseHelper().getInfoFromId(infoId),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              final address = snapshot.data;
+              final info = snapshot.data;
               return Row(
                 children: [
                   Expanded(
@@ -41,7 +41,7 @@ class AddressShortDetailsCard extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          address.title,
+                          info.title,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -70,15 +70,15 @@ class AddressShortDetailsCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            address.receiver,
+                            info.name,
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             ),
                           ),
-                          Text("City: ${address.city}"),
-                          Text("Phone: ${address.phone}"),
+                          Text("City: ${info.city}"),
+                          Text("Phone: ${info.phone}"),
                         ],
                       ),
                     ),

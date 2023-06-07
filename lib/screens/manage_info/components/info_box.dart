@@ -1,16 +1,16 @@
 import 'package:e_commerce_app_flutter/constants.dart';
-import 'package:e_commerce_app_flutter/models/Address.dart';
+import 'package:e_commerce_app_flutter/models/Info.dart';
 import 'package:e_commerce_app_flutter/services/database/user_database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-class AddressBox extends StatelessWidget {
-  const AddressBox({
+class infoBox extends StatelessWidget {
+  const infoBox({
     Key key,
-    @required this.addressId,
+    @required this.infoId,
   }) : super(key: key);
 
-  final String addressId;
+  final String infoId;
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +29,16 @@ class AddressBox extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: FutureBuilder<Address>(
-                  future: UserDatabaseHelper().getAddressFromId(addressId),
+              child: FutureBuilder<Info>(
+                  future: UserDatabaseHelper().getInfoFromId(infoId),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      final address = snapshot.data;
+                      final info = snapshot.data;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${address.title}",
+                            "${info.title}",
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.black,
@@ -47,55 +47,43 @@ class AddressBox extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           Text(
-                            "${address.receiver}",
+                            "${info.name}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            "${address.addresLine1}",
+                            "${info.addressLine1}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            "${address.addressLine2}",
+                            "${info.addressLine2}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            "City: ${address.city}",
+                            "City: ${info.city}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            "District: ${address.district}",
+                            "Email: ${info.email}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            "State: ${address.state}",
+                            "PIN: ${info.pincode}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            "Landmark: ${address.landmark}",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            "PIN: ${address.pincode}",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            "Phone: ${address.phone}",
+                            "Phone: ${info.phone}",
                             style: TextStyle(
                               fontSize: 16,
                             ),

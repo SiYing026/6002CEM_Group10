@@ -1,15 +1,15 @@
 import 'package:e_commerce_app_flutter/components/default_button.dart';
 import 'package:e_commerce_app_flutter/components/nothingtoshow_container.dart';
 import 'package:e_commerce_app_flutter/constants.dart';
-import 'package:e_commerce_app_flutter/screens/edit_address/edit_address_screen.dart';
-import 'package:e_commerce_app_flutter/screens/manage_addresses/components/address_short_details_card.dart';
-import 'package:e_commerce_app_flutter/services/data_streams/addresses_stream.dart';
+import 'package:e_commerce_app_flutter/screens/edit_info/edit_info_screen.dart';
+import 'package:e_commerce_app_flutter/screens/manage_info/components/info_short_details_card.dart';
+import 'package:e_commerce_app_flutter/services/data_streams/info_stream.dart';
 import 'package:e_commerce_app_flutter/services/database/user_database_helper.dart';
 import 'package:e_commerce_app_flutter/size_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import '../components/address_box.dart';
+import 'package:e_commerce_app_flutter/screens/manage_info/components/info_box.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -17,18 +17,18 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  final AddressesStream addressesStream = AddressesStream();
+  final InfoStream infoStream = InfoStream();
 
   @override
   void initState() {
     super.initState();
-    addressesStream.init();
+    infoStream.init();
   }
 
   @override
   void dispose() {
     super.dispose();
-    addressesStream.dispose();
+    infoStream.dispose();
   }
 
   @override
@@ -47,7 +47,7 @@ class _BodyState extends State<Body> {
                 children: [
                   SizedBox(height: getProportionateScreenHeight(10)),
                   Text(
-                    "Manage Addresses",
+                    "Manage Information",
                     style: headingStyle,
                   ),
                   Text(
@@ -56,12 +56,12 @@ class _BodyState extends State<Body> {
                   ),
                   SizedBox(height: getProportionateScreenHeight(20)),
                   DefaultButton(
-                    text: "Add New Address",
+                    text: "Add New Information",
                     press: () async {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditAddressScreen(),
+                          builder: (context) => EditInfoScreen(),
                         ),
                       );
                     },
@@ -70,23 +70,23 @@ class _BodyState extends State<Body> {
                   SizedBox(
                     height: SizeConfig.screenHeight * 0.7,
                     child: StreamBuilder<List<String>>(
-                      stream: addressesStream.stream,
+                      stream: infoStream.stream,
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          final addresses = snapshot.data;
-                          if (addresses.length == 0) {
+                          final info = snapshot.data;
+                          if (info.length == 0) {
                             return Center(
                               child: NothingToShowContainer(
                                 iconPath: "assets/icons/add_location.svg",
-                                secondaryMessage: "Add your first Address",
+                                secondaryMessage: "Add your Information",
                               ),
                             );
                           }
                           return ListView.builder(
                               physics: BouncingScrollPhysics(),
-                              itemCount: addresses.length,
+                              itemCount: info.length,
                               itemBuilder: (context, index) {
-                                return buildAddressItemCard(addresses[index]);
+                                return buildInfoItemCard(info[index]);
                               });
                         } else if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -118,18 +118,18 @@ class _BodyState extends State<Body> {
   }
 
   Future<void> refreshPage() {
-    addressesStream.reload();
+    infoStream.reload();
     return Future<void>.value();
   }
 
   Future<bool> deleteButtonCallback(
-      BuildContext context, String addressId) async {
+      BuildContext context, String infoId) async {
     final confirmDeletion = await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: Text("Confirmation"),
-          content: Text("Are you sure you want to delete this Address ?"),
+          content: Text("Are you sure you want to delete this Information ?"),
           actions: [
             TextButton(
               child: Text("Yes"),
@@ -153,11 +153,11 @@ class _BodyState extends State<Body> {
       String snackbarMessage;
       try {
         status =
-            await UserDatabaseHelper().deleteAddressForCurrentUser(addressId);
+            await UserDatabaseHelper().deleteInfoForCurrentUser(infoId);
         if (status == true) {
-          snackbarMessage = "Address deleted successfully";
+          snackbarMessage = "Information deleted successfully";
         } else {
-          throw "Coulnd't delete address due to unknown reason";
+          throw "Couldn't delete info due to unknown reason";
         }
       } on FirebaseException catch (e) {
         Logger().w("Firebase Exception: $e");
@@ -180,24 +180,24 @@ class _BodyState extends State<Body> {
   }
 
   Future<bool> editButtonCallback(
-      BuildContext context, String addressId) async {
+      BuildContext context, String infoId) async {
     await Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) =>
-                EditAddressScreen(addressIdToEdit: addressId)));
+                EditInfoScreen(infoIdToEdit: infoId)));
     await refreshPage();
     return false;
   }
 
-  Future<void> addressItemTapCallback(String addressId) async {
+  Future<void> infoItemTapCallback(String infoId) async {
     await showDialog(
       context: context,
       builder: (context) {
         return SimpleDialog(
           backgroundColor: Colors.transparent,
-          title: AddressBox(
-            addressId: addressId,
+          title: infoBox(
+            infoId: infoId,
           ),
           titlePadding: EdgeInsets.zero,
         );
@@ -206,13 +206,13 @@ class _BodyState extends State<Body> {
     await refreshPage();
   }
 
-  Widget buildAddressItemCard(String addressId) {
+  Widget buildInfoItemCard(String infoId) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 6,
       ),
       child: Dismissible(
-        key: Key(addressId),
+        key: Key(infoId),
         direction: DismissDirection.horizontal,
         background: buildDismissibleSecondaryBackground(),
         secondaryBackground: buildDismissiblePrimaryBackground(),
@@ -220,18 +220,18 @@ class _BodyState extends State<Body> {
           DismissDirection.endToStart: 0.65,
           DismissDirection.startToEnd: 0.65,
         },
-        child: AddressShortDetailsCard(
-          addressId: addressId,
+        child: InfoShortDetailsCard(
+          infoId: infoId,
           onTap: () async {
-            await addressItemTapCallback(addressId);
+            await infoItemTapCallback(infoId);
           },
         ),
         confirmDismiss: (direction) async {
           if (direction == DismissDirection.startToEnd) {
-            final status = await deleteButtonCallback(context, addressId);
+            final status = await deleteButtonCallback(context, infoId);
             return status;
           } else if (direction == DismissDirection.endToStart) {
-            final status = await editButtonCallback(context, addressId);
+            final status = await editButtonCallback(context, infoId);
             return status;
           }
           return false;
