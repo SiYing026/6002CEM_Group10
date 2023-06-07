@@ -30,29 +30,30 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   final productCategories = <Map>[
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Electronics.svg",
-      TITLE_KEY: "Electronics",
-      PRODUCT_TYPE_KEY: PackageType.Electronics,
+
+      ICON_KEY: "assets/icons/Helicopter.svg",
+      TITLE_KEY: "Helicopter",
+      PRODUCT_TYPE_KEY: PackageType.Helicopter,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Books.svg",
-      TITLE_KEY: "Books",
-      PRODUCT_TYPE_KEY: PackageType.Books,
+      ICON_KEY: "assets/icons/CruiseShip.svg",
+      TITLE_KEY: "Cruise Ship",
+      PRODUCT_TYPE_KEY: PackageType.CruiseShip,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Fashion.svg",
-      TITLE_KEY: "Fashion",
-      PRODUCT_TYPE_KEY: PackageType.Fashion,
+      ICON_KEY: "assets/icons/HotAirBalloon.svg",
+      TITLE_KEY: "Hot Air Balloon",
+      PRODUCT_TYPE_KEY: PackageType.HotAirBalloon,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Groceries.svg",
-      TITLE_KEY: "Groceries",
-      PRODUCT_TYPE_KEY: PackageType.Groceries,
+      ICON_KEY: "assets/icons/Paragliding.svg",
+      TITLE_KEY: "Paragliding",
+      PRODUCT_TYPE_KEY: PackageType.Paragliding,
     },
     <String, dynamic>{
-      ICON_KEY: "assets/icons/Art.svg",
-      TITLE_KEY: "Art",
-      PRODUCT_TYPE_KEY: PackageType.Art,
+      ICON_KEY: "assets/icons/WhitewaterRafting.svg",
+      TITLE_KEY: "Whitewater Rafting",
+      PRODUCT_TYPE_KEY: PackageType.WhitewaterRafting,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Others.svg",
@@ -197,9 +198,9 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.5,
                   child: ProductsSection(
-                    sectionTitle: "Products You Like",
+                    sectionTitle: "Packages You Like",
                     productsStreamController: favouriteProductsStream,
-                    emptyListMessage: "Add Product to Favourites",
+                    emptyListMessage: "Add Packages to Favourites",
                     onProductCardTapped: onProductCardTapped,
                   ),
                 ),
@@ -207,7 +208,7 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.8,
                   child: ProductsSection(
-                    sectionTitle: "Explore All Products",
+                    sectionTitle: "Explore All Packages",
                     productsStreamController: allProductsStream,
                     emptyListMessage: "Looks like all Stores are closed",
                     onProductCardTapped: onProductCardTapped,
