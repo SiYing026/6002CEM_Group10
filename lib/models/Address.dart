@@ -10,7 +10,6 @@ class Address extends Model {
   static const String LANDMARK_KEY = "landmark";
   static const String PINCODE_KEY = "pincode";
   static const String RECEIVER_KEY = "receiver";
-  static const String PHONE_KEY = "phone";
 
   String title;
   String receiver;
@@ -50,7 +49,6 @@ class Address extends Model {
       state: map[STATE_KEY],
       landmark: map[LANDMARK_KEY],
       pincode: map[PINCODE_KEY],
-      phone: map[PHONE_KEY],
     );
   }
 
@@ -66,7 +64,6 @@ class Address extends Model {
       STATE_KEY: state,
       LANDMARK_KEY: landmark,
       PINCODE_KEY: pincode,
-      PHONE_KEY: phone,
     };
 
     return map;
@@ -84,7 +81,6 @@ class Address extends Model {
     if (state != null) map[STATE_KEY] = state;
     if (landmark != null) map[LANDMARK_KEY] = landmark;
     if (pincode != null) map[PINCODE_KEY] = pincode;
-    if (phone != null) map[PHONE_KEY] = phone;
     return map;
   }
 }

@@ -512,7 +512,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (productDetails.selectedImages.length < 1) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Upload atleast One Image of Product"),
+          content: Text("Upload at least One Image of Product"),
         ),
       );
       return;
@@ -520,7 +520,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (productDetails.packageType == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Please select Product Type"),
+          content: Text("Please select Package Type"),
         ),
       );
       return;
@@ -528,7 +528,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (productDetails.searchTags.length < 3) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Add atleast 3 search tags"),
+          content: Text("Add at least 3 search tags"),
         ),
       );
       return;
