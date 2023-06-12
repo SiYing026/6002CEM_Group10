@@ -1,5 +1,5 @@
 import 'package:e_commerce_app_flutter/constants.dart';
-import 'package:e_commerce_app_flutter/models/Address.dart';
+import 'package:e_commerce_app_flutter/models/Info.dart';
 import 'package:e_commerce_app_flutter/services/database/user_database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
