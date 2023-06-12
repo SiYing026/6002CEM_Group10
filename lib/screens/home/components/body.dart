@@ -19,7 +19,7 @@ import 'product_type_box.dart';
 import 'products_section.dart';
 
 const String ICON_KEY = "icon";
-const String TITLE_KEY = "title";
+const String NICKNAME_KEY = "nickname";
 const String PRODUCT_TYPE_KEY = "product_type";
 
 class Body extends StatefulWidget {
@@ -32,32 +32,32 @@ class _BodyState extends State<Body> {
     <String, dynamic>{
 
       ICON_KEY: "assets/icons/Helicopter.svg",
-      TITLE_KEY: "Helicopter",
+      NICKNAME_KEY: "Helicopter",
       PRODUCT_TYPE_KEY: PackageType.Helicopter,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/CruiseShip.svg",
-      TITLE_KEY: "Cruise Ship",
+      NICKNAME_KEY: "Cruise Ship",
       PRODUCT_TYPE_KEY: PackageType.CruiseShip,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/HotAirBalloon.svg",
-      TITLE_KEY: "Hot Air Balloon",
+      NICKNAME_KEY: "Hot Air Balloon",
       PRODUCT_TYPE_KEY: PackageType.HotAirBalloon,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Paragliding.svg",
-      TITLE_KEY: "Paragliding",
+      NICKNAME_KEY: "Paragliding",
       PRODUCT_TYPE_KEY: PackageType.Paragliding,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/WhitewaterRafting.svg",
-      TITLE_KEY: "Whitewater Rafting",
+      NICKNAME_KEY: "Whitewater Rafting",
       PRODUCT_TYPE_KEY: PackageType.WhitewaterRafting,
     },
     <String, dynamic>{
       ICON_KEY: "assets/icons/Others.svg",
-      TITLE_KEY: "Others",
+      NICKNAME_KEY: "Others",
       PRODUCT_TYPE_KEY: PackageType.Others,
     },
   ];
@@ -174,7 +174,7 @@ class _BodyState extends State<Body> {
                           (index) {
                             return PackageTypeBox(
                               icon: productCategories[index][ICON_KEY],
-                              title: productCategories[index][TITLE_KEY],
+                              title: productCategories[index][NICKNAME_KEY],
                               onPress: () {
                                 Navigator.push(
                                   context,

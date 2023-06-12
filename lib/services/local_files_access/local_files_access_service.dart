@@ -16,7 +16,7 @@ Future<String> choseImageFromLocalFiles(
   final imgSource = await showDialog(
     builder: (context) {
       return AlertDialog(
-        title: Text("Chose image source"),
+        title: Text("Choose image source"),
         actions: [
           TextButton(
             child: Text("Camera"),

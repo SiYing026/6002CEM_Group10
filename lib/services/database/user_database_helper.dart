@@ -11,7 +11,6 @@ class UserDatabaseHelper {
   static const String CART_COLLECTION_NAME = "cart";
   static const String ORDERED_PRODUCTS_COLLECTION_NAME = "ordered_products";
 
-  static const String PHONE_KEY = 'phone';
   static const String DP_KEY = "display_picture";
   static const String FAV_PRODUCTS_KEY = "favourite_products";
 
@@ -32,7 +31,6 @@ class UserDatabaseHelper {
   Future<void> createNewUser(String uid) async {
     await firestore.collection(USERS_COLLECTION_NAME).doc(uid).set({
       DP_KEY: null,
-      PHONE_KEY: null,
       FAV_PRODUCTS_KEY: List<String>(),
     });
   }
@@ -317,14 +315,6 @@ class UserDatabaseHelper {
         .doc(uid)
         .get()
         .asStream();
-  }
-
-  Future<bool> updatePhoneForCurrentUser(String phone) async {
-    String uid = AuthentificationService().currentUser.uid;
-    final userDocSnapshot =
-        firestore.collection(USERS_COLLECTION_NAME).doc(uid);
-    await userDocSnapshot.update({PHONE_KEY: phone});
-    return true;
   }
 
   String getPathForCurrentUserDisplayPicture() {

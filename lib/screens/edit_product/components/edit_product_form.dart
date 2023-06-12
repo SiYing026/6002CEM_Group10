@@ -13,7 +13,6 @@ import 'package:e_commerce_app_flutter/services/local_files_access/local_files_a
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:future_progress_dialog/future_progress_dialog.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
@@ -78,7 +77,7 @@ class _EditProductFormState extends State<EditProductForm> {
       productDetails.initialSelectedImages = widget.product.images
           .map((e) => CustomImage(imgType: ImageType.network, path: e))
           .toList();
-      productDetails.initialProductType = product.productType;
+      productDetails.initialPackageType = product.packageType;
       productDetails.initSearchTags = product.searchTags ?? [];
     }
   }
@@ -252,8 +251,8 @@ class _EditProductFormState extends State<EditProductForm> {
       child: Consumer<ProductDetails>(
         builder: (context, productDetails, child) {
           return DropdownButton(
-            value: productDetails.productType,
-            items: ProductType.values
+            value: productDetails.packageType,
+            items: PackageType.values
                 .map(
                   (e) => DropdownMenuItem(
                     value: e,
@@ -271,7 +270,7 @@ class _EditProductFormState extends State<EditProductForm> {
               fontSize: 16,
             ),
             onChanged: (value) {
-              productDetails.productType = value;
+              productDetails.packageType = value;
             },
             elevation: 0,
             underline: SizedBox(width: 0, height: 0),
@@ -517,7 +516,7 @@ class _EditProductFormState extends State<EditProductForm> {
       );
       return;
     }
-    if (productDetails.productType == null) {
+    if (productDetails.packageType == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Please select Package Type"),
@@ -536,7 +535,7 @@ class _EditProductFormState extends State<EditProductForm> {
     String productId;
     String snackbarMessage;
     try {
-      product.productType = productDetails.productType;
+      product.packageType = productDetails.packageType;
       product.searchTags = productDetails.searchTags;
       final productUploadFuture = newProduct
           ? ProductDatabaseHelper().addUsersProduct(product)

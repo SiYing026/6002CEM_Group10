@@ -253,18 +253,18 @@ class _BodyState extends State<Body> {
 
 
   String bannerFromPackageType() {
-    switch (widget.productType) {
-      case ProductType.Helicopter:
+    switch (widget.packageType) {
+      case PackageType.Helicopter:
         return "assets/images/helicopter_banner.jpg";
-      case ProductType.CruiseShip:
+      case PackageType.CruiseShip:
         return "assets/images/cruiseship_banner.JPG";
-      case ProductType.HotAirBalloon:
+      case PackageType.HotAirBalloon:
         return "assets/images/hotairballoon_banner.JPG";
-      case ProductType.Paragliding:
+      case PackageType.Paragliding:
         return "assets/images/paragliding_banner.JPG";
-      case ProductType.WhitewaterRafting:
+      case PackageType.WhitewaterRafting:
         return "assets/images/whitewaterrafting_banner.JPG";
-      case ProductType.Others:
+      case PackageType.Others:
         return "assets/images/others_banner.JPG";
       default:
         return "assets/images/others_banner.JPG";
