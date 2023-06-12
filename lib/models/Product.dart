@@ -2,11 +2,11 @@ import 'package:e_commerce_app_flutter/models/Model.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 enum PackageType {
-  Electronics,
-  Books,
-  Fashion,
-  Groceries,
-  Art,
+  Helicopter,
+  CruiseShip,
+  HotAirBalloon,
+  Paragliding,
+  WhitewaterRafting,
   Others,
 }
 

@@ -251,22 +251,23 @@ class _BodyState extends State<Body> {
     );
   }
 
+
   String bannerFromPackageType() {
-    switch (widget.packageType) {
-      case PackageType.Electronics:
-        return "assets/images/electronics_banner.jpg";
-      case PackageType.Books:
-        return "assets/images/books_banner.jpg";
-      case PackageType.Fashion:
-        return "assets/images/fashions_banner.jpg";
-      case PackageType.Groceries:
-        return "assets/images/groceries_banner.jpg";
-      case PackageType.Art:
-        return "assets/images/arts_banner.jpg";
-      case PackageType.Others:
-        return "assets/images/others_banner.jpg";
+    switch (widget.productType) {
+      case ProductType.Helicopter:
+        return "assets/images/helicopter_banner.jpg";
+      case ProductType.CruiseShip:
+        return "assets/images/cruiseship_banner.JPG";
+      case ProductType.HotAirBalloon:
+        return "assets/images/hotairballoon_banner.JPG";
+      case ProductType.Paragliding:
+        return "assets/images/paragliding_banner.JPG";
+      case ProductType.WhitewaterRafting:
+        return "assets/images/whitewaterrafting_banner.JPG";
+      case ProductType.Others:
+        return "assets/images/others_banner.JPG";
       default:
-        return "assets/images/others_banner.jpg";
+        return "assets/images/others_banner.JPG";
     }
   }
 }
