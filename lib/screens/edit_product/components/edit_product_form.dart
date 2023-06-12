@@ -13,7 +13,6 @@ import 'package:e_commerce_app_flutter/services/local_files_access/local_files_a
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:future_progress_dialog/future_progress_dialog.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
@@ -93,7 +92,7 @@ class _EditProductFormState extends State<EditProductForm> {
         SizedBox(height: getProportionateScreenHeight(10)),
         buildUploadImagesTile(context),
         SizedBox(height: getProportionateScreenHeight(20)),
-        buildPackageTypeDropdown(),
+        buildProductTypeDropdown(),
         SizedBox(height: getProportionateScreenHeight(20)),
         buildProductSearchTagsTile(),
         SizedBox(height: getProportionateScreenHeight(80)),
@@ -239,7 +238,7 @@ class _EditProductFormState extends State<EditProductForm> {
     return false;
   }
 
-  Widget buildPackageTypeDropdown() {
+  Widget buildProductTypeDropdown() {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 24,
@@ -264,7 +263,7 @@ class _EditProductFormState extends State<EditProductForm> {
                 )
                 .toList(),
             hint: Text(
-              "Choose Product Type",
+              "Choose Package Type",
             ),
             style: TextStyle(
               color: kTextColor,
@@ -512,7 +511,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (productDetails.selectedImages.length < 1) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Upload at least One Image of Product"),
+          content: Text("Upload at least One Image of Packages"),
         ),
       );
       return;
