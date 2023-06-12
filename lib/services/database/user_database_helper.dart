@@ -7,7 +7,7 @@ import 'package:e_commerce_app_flutter/services/database/product_database_helper
 
 class UserDatabaseHelper {
   static const String USERS_COLLECTION_NAME = "users";
-  static const String ADDRESSES_COLLECTION_NAME = "addresses";
+  static const String INFO_COLLECTION_NAME = "info";
   static const String CART_COLLECTION_NAME = "cart";
   static const String ORDERED_PRODUCTS_COLLECTION_NAME = "ordered_products";
 
@@ -39,7 +39,7 @@ class UserDatabaseHelper {
     final uid = AuthentificationService().currentUser.uid;
     final docRef = firestore.collection(USERS_COLLECTION_NAME).doc(uid);
     final cartCollectionRef = docRef.collection(CART_COLLECTION_NAME);
-    final addressCollectionRef = docRef.collection(ADDRESSES_COLLECTION_NAME);
+    final infoCollectionRef = docRef.collection(INFO_COLLECTION_NAME);
     final ordersCollectionRef =
         docRef.collection(ORDERED_PRODUCTS_COLLECTION_NAME);
 
@@ -47,9 +47,9 @@ class UserDatabaseHelper {
     for (final cartDoc in cartDocs.docs) {
       await cartCollectionRef.doc(cartDoc.id).delete();
     }
-    final addressesDocs = await addressCollectionRef.get();
-    for (final addressDoc in addressesDocs.docs) {
-      await addressCollectionRef.doc(addressDoc.id).delete();
+    final infoDocs = await infoCollectionRef.get();
+    for (final infoDoc in infoDocs.docs) {
+      await infoCollectionRef.doc(infoDoc.id).delete();
     }
     final ordersDoc = await ordersCollectionRef.get();
     for (final orderDoc in ordersDoc.docs) {
@@ -99,62 +99,62 @@ class UserDatabaseHelper {
     return true;
   }
 
-  Future<List<String>> get addressesList async {
+  Future<List<String>> get infoList async {
     String uid = AuthentificationService().currentUser.uid;
     final snapshot = await firestore
         .collection(USERS_COLLECTION_NAME)
         .doc(uid)
-        .collection(ADDRESSES_COLLECTION_NAME)
+        .collection(INFO_COLLECTION_NAME)
         .get();
-    final addresses = List<String>();
+    final info = List<String>();
     snapshot.docs.forEach((doc) {
-      addresses.add(doc.id);
+      info.add(doc.id);
     });
 
-    return addresses;
+    return info;
   }
 
-  Future<Address> getAddressFromId(String id) async {
+  Future<Info> getInfoFromId(String id) async {
     String uid = AuthentificationService().currentUser.uid;
     final doc = await firestore
         .collection(USERS_COLLECTION_NAME)
         .doc(uid)
-        .collection(ADDRESSES_COLLECTION_NAME)
+        .collection(INFO_COLLECTION_NAME)
         .doc(id)
         .get();
-    final address = Address.fromMap(doc.data(), id: doc.id);
-    return address;
+    final info = Info.fromMap(doc.data(), id: doc.id);
+    return info;
   }
 
-  Future<bool> addAddressForCurrentUser(Address address) async {
+  Future<bool> addInfoForCurrentUser(Info info) async {
     String uid = AuthentificationService().currentUser.uid;
-    final addressesCollectionReference = firestore
+    final infoCollectionReference = firestore
         .collection(USERS_COLLECTION_NAME)
         .doc(uid)
-        .collection(ADDRESSES_COLLECTION_NAME);
-    await addressesCollectionReference.add(address.toMap());
+        .collection(INFO_COLLECTION_NAME);
+    await infoCollectionReference.add(info.toMap());
     return true;
   }
 
-  Future<bool> deleteAddressForCurrentUser(String id) async {
+  Future<bool> deleteInfoForCurrentUser(String id) async {
     String uid = AuthentificationService().currentUser.uid;
-    final addressDocReference = firestore
+    final infoDocReference = firestore
         .collection(USERS_COLLECTION_NAME)
         .doc(uid)
-        .collection(ADDRESSES_COLLECTION_NAME)
+        .collection(INFO_COLLECTION_NAME)
         .doc(id);
-    await addressDocReference.delete();
+    await infoDocReference.delete();
     return true;
   }
 
-  Future<bool> updateAddressForCurrentUser(Address address) async {
+  Future<bool> updateInfoForCurrentUser(Info info) async {
     String uid = AuthentificationService().currentUser.uid;
-    final addressDocReference = firestore
+    final infoDocReference = firestore
         .collection(USERS_COLLECTION_NAME)
         .doc(uid)
-        .collection(ADDRESSES_COLLECTION_NAME)
-        .doc(address.id);
-    await addressDocReference.update(address.toMap());
+        .collection(INFO_COLLECTION_NAME)
+        .doc(info.id);
+    await infoDocReference.update(info.toMap());
     return true;
   }
 

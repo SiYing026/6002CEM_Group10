@@ -77,7 +77,7 @@ class _EditProductFormState extends State<EditProductForm> {
       productDetails.initialSelectedImages = widget.product.images
           .map((e) => CustomImage(imgType: ImageType.network, path: e))
           .toList();
-      productDetails.initialPackageType = product.packageType;
+      productDetails.initialProductType = product.productType;
       productDetails.initSearchTags = product.searchTags ?? [];
     }
   }
@@ -92,7 +92,7 @@ class _EditProductFormState extends State<EditProductForm> {
         SizedBox(height: getProportionateScreenHeight(10)),
         buildUploadImagesTile(context),
         SizedBox(height: getProportionateScreenHeight(20)),
-        buildPackageTypeDropdown(),
+        buildProductTypeDropdown(),
         SizedBox(height: getProportionateScreenHeight(20)),
         buildProductSearchTagsTile(),
         SizedBox(height: getProportionateScreenHeight(80)),
@@ -238,7 +238,7 @@ class _EditProductFormState extends State<EditProductForm> {
     return false;
   }
 
-  Widget buildPackageTypeDropdown() {
+  Widget buildProductTypeDropdown() {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 24,
@@ -251,8 +251,8 @@ class _EditProductFormState extends State<EditProductForm> {
       child: Consumer<ProductDetails>(
         builder: (context, productDetails, child) {
           return DropdownButton(
-            value: productDetails.packageType,
-            items: PackageType.values
+            value: productDetails.productType,
+            items: ProductType.values
                 .map(
                   (e) => DropdownMenuItem(
                     value: e,
@@ -263,14 +263,14 @@ class _EditProductFormState extends State<EditProductForm> {
                 )
                 .toList(),
             hint: Text(
-              "Choose Product Type",
+              "Choose Package Type",
             ),
             style: TextStyle(
               color: kTextColor,
               fontSize: 16,
             ),
             onChanged: (value) {
-              productDetails.packageType = value;
+              productDetails.productType = value;
             },
             elevation: 0,
             underline: SizedBox(width: 0, height: 0),
@@ -516,7 +516,7 @@ class _EditProductFormState extends State<EditProductForm> {
       );
       return;
     }
-    if (productDetails.packageType == null) {
+    if (productDetails.productType == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Please select Package Type"),
@@ -535,7 +535,7 @@ class _EditProductFormState extends State<EditProductForm> {
     String productId;
     String snackbarMessage;
     try {
-      product.packageType = productDetails.packageType;
+      product.productType = productDetails.productType;
       product.searchTags = productDetails.searchTags;
       final productUploadFuture = newProduct
           ? ProductDatabaseHelper().addUsersProduct(product)

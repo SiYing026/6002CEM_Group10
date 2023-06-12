@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'components/body.dart';
 
-class ManageAddressesScreen extends StatelessWidget {
+class ManageInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
