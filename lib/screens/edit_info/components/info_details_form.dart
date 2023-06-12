@@ -22,7 +22,7 @@ class InfoDetailsForm extends StatefulWidget {
 class _InfoDetailsFormState extends State<InfoDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController titleFieldController = TextEditingController();
+  final TextEditingController nicknameFieldController = TextEditingController();
 
   final TextEditingController nameFieldController = TextEditingController();
 
@@ -42,7 +42,7 @@ class _InfoDetailsFormState extends State<InfoDetailsForm> {
 
   @override
   void dispose() {
-    titleFieldController.dispose();
+    nicknameFieldController.dispose();
     nameFieldController.dispose();
     addressLine1FieldController.dispose();
     addressLine2FieldController.dispose();
@@ -60,7 +60,7 @@ class _InfoDetailsFormState extends State<InfoDetailsForm> {
       child: Column(
         children: [
           SizedBox(height: getProportionateScreenHeight(20)),
-          buildTitleField(),
+          buildNicknameField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildNameField(),
           SizedBox(height: getProportionateScreenHeight(30)),
@@ -86,7 +86,7 @@ class _InfoDetailsFormState extends State<InfoDetailsForm> {
       ),
     );
     if (widget.infoToEdit != null) {
-      titleFieldController.text = widget.infoToEdit.title;
+      nicknameFieldController.text = widget.infoToEdit.nickname;
       nameFieldController.text = widget.infoToEdit.name;
       addressLine1FieldController.text = widget.infoToEdit.addressLine1;
       addressLine2FieldController.text = widget.infoToEdit.addressLine2;
@@ -98,9 +98,9 @@ class _InfoDetailsFormState extends State<InfoDetailsForm> {
     return form;
   }
 
-  Widget buildTitleField() {
+  Widget buildNicknameField() {
     return TextFormField(
-      controller: titleFieldController,
+      controller: nicknameFieldController,
       keyboardType: TextInputType.name,
       maxLength: 8,
       decoration: InputDecoration(
@@ -109,7 +109,7 @@ class _InfoDetailsFormState extends State<InfoDetailsForm> {
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {
-        if (titleFieldController.text.isEmpty) {
+        if (nicknameFieldController.text.isEmpty) {
           return FIELD_REQUIRED_MSG;
         }
         return null;
@@ -324,7 +324,7 @@ class _InfoDetailsFormState extends State<InfoDetailsForm> {
   Info generateInfoObject({String id}) {
     return Info(
       id: id,
-      title: titleFieldController.text,
+      nickname: nicknameFieldController.text,
       name: nameFieldController.text,
       addressLine1: addressLine1FieldController.text,
       addressLine2: addressLine2FieldController.text,

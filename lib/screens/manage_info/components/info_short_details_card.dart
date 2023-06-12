@@ -41,7 +41,7 @@ class InfoShortDetailsCard extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          info.title,
+                          info.nickname,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,

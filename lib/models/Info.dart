@@ -1,7 +1,7 @@
 import 'Model.dart';
 
 class Info extends Model {
-  static const String TITLE_KEY = "title";
+  static const String NICKNAME_KEY = "nickname";
   static const String ADDRESS_LINE_1_KEY = "address_line_1";
   static const String ADDRESS_LINE_2_KEY = "address_line_2";
   static const String CITY_KEY = "city";
@@ -10,7 +10,7 @@ class Info extends Model {
   static const String NAME_KEY = "name";
   static const String PHONE_KEY = "phone";
 
-  String title;
+  String nickname;
   String name;
 
   String addressLine1;
@@ -22,7 +22,7 @@ class Info extends Model {
 
   Info({
     String id,
-    this.title,
+    this.nickname,
     this.name,
     this.addressLine1,
     this.addressLine2,
@@ -35,7 +35,7 @@ class Info extends Model {
   factory Info.fromMap(Map<String, dynamic> map, {String id}) {
     return Info(
       id: id,
-      title: map[TITLE_KEY],
+      nickname: map[NICKNAME_KEY],
       name: map[NAME_KEY],
       addressLine1: map[ADDRESS_LINE_1_KEY],
       addressLine2: map[ADDRESS_LINE_2_KEY],
@@ -49,7 +49,7 @@ class Info extends Model {
   @override
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{
-      TITLE_KEY: title,
+      NICKNAME_KEY: nickname,
       NAME_KEY: name,
       ADDRESS_LINE_1_KEY: addressLine1,
       ADDRESS_LINE_2_KEY: addressLine2,
@@ -65,7 +65,7 @@ class Info extends Model {
   @override
   Map<String, dynamic> toUpdateMap() {
     final map = <String, dynamic>{};
-    if (title != null) map[TITLE_KEY] = title;
+    if (nickname != null) map[NICKNAME_KEY] = nickname;
     if (name != null) map[NAME_KEY] = name;
     if (addressLine1 != null) map[ADDRESS_LINE_1_KEY] = addressLine1;
     if (addressLine2 != null) map[ADDRESS_LINE_2_KEY] = addressLine2;

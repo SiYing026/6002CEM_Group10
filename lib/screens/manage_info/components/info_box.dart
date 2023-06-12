@@ -38,7 +38,7 @@ class infoBox extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${info.title}",
+                            "${info.nickname}",
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.black,
