@@ -185,12 +185,12 @@ class _BodyState extends State<Body> {
               );
             }
 
-            bool productInfoDeleted = false;
+            bool packageInfoDeleted = false;
             String snackbarMessage;
             try {
               final deleteProductFuture =
                   ProductDatabaseHelper().deleteUserProduct(product.id);
-              productInfoDeleted = await showDialog(
+              packageInfoDeleted = await showDialog(
                 context: context,
                 builder: (context) {
                   return AsyncProgressDialog(
@@ -199,7 +199,7 @@ class _BodyState extends State<Body> {
                   );
                 },
               );
-              if (productInfoDeleted == true) {
+              if (packageInfoDeleted == true) {
                 snackbarMessage = "Product deleted successfully";
               } else {
                 throw "Coulnd't delete product, please retry";

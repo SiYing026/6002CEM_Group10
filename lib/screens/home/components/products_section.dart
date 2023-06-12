@@ -16,7 +16,7 @@ class ProductsSection extends StatelessWidget {
     Key key,
     @required this.sectionTitle,
     @required this.productsStreamController,
-    this.emptyListMessage = "No Products to show here",
+    this.emptyListMessage = "No Package to show here",
     @required this.onProductCardTapped,
   }) : super(key: key);
 

@@ -3,7 +3,7 @@ import 'package:e_commerce_app_flutter/services/data_streams/data_stream.dart';
 import 'package:e_commerce_app_flutter/services/database/product_database_helper.dart';
 
 class CategoryProductsStream extends DataStream<List<String>> {
-  final ProductType category;
+  final PackageType category;
 
   CategoryProductsStream(this.category);
   @override
