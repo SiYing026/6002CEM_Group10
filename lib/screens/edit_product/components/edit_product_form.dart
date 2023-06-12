@@ -6,7 +6,6 @@ import 'package:e_commerce_app_flutter/components/default_button.dart';
 import 'package:e_commerce_app_flutter/exceptions/local_files_handling/image_picking_exceptions.dart';
 import 'package:e_commerce_app_flutter/exceptions/local_files_handling/local_file_handling_exception.dart';
 import 'package:e_commerce_app_flutter/models/Product.dart';
-import 'package:e_commerce_app_flutter/screens/edit_product/provider_models/ProductDetails.dart';
 import 'package:e_commerce_app_flutter/services/database/product_database_helper.dart';
 import 'package:e_commerce_app_flutter/services/firestore_files_access/firestore_files_access_service.dart';
 import 'package:e_commerce_app_flutter/services/local_files_access/local_files_access_service.dart';
@@ -512,7 +511,7 @@ class _EditProductFormState extends State<EditProductForm> {
     if (productDetails.selectedImages.length < 1) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Upload at least One Image of Packages"),
+          content: Text("Upload at least One Image of Product"),
         ),
       );
       return;
